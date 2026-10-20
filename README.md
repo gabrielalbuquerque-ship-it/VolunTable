@@ -6,5 +6,5 @@ Stack: Next.js (App Router), Tailwind CSS 4, Supabase (Postgres + Auth). Identid
 ## Rodando local
 1. Crie um projeto no Supabase e execute `supabase/migrations/0001_projects.sql` no SQL editor.
 2. Crie um usuário em Authentication > Users.
-3. `cp .env.example .env.local` e preencha URL e anon key.
+3. `cp .env.example .env.local` e preencha URL e publishable key.
 4. `npm install && npm run dev`
