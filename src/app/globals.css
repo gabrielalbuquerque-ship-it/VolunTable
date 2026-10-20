@@ -21,3 +21,26 @@ body {
   font-family: var(--font-sans);
   font-weight: 400;
 }
+
+@theme {
+  --color-row-hover: #fcf8f5;
+  --color-accent-hover: #a33a24;
+}
+
+::selection {
+  background: var(--color-acc-lt);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-faint) transparent;
+}
+
+@layer base {
+  input,
+  select,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+}

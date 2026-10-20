@@ -1,11 +1,36 @@
-export const STATUS = {
-  planejado: { label: "Planejado", cls: "text-slate border-hair", bar: "border-t-faint" },
-  em_andamento: { label: "Em andamento", cls: "text-gold border-gold-lt", bar: "border-t-gold" },
-  concluido: { label: "Concluído", cls: "text-accent border-acc-lt", bar: "border-t-accent" },
-  pausado: { label: "Pausado", cls: "text-faint border-hair", bar: "border-t-hair" },
-} as const;
+export const STATUS_KEYS = ["planejado", "em_andamento", "concluido", "pausado"] as const;
 
-export type ProjectStatus = keyof typeof STATUS;
+export type ProjectStatus = (typeof STATUS_KEYS)[number];
+
+export const STATUS: Record<
+  ProjectStatus,
+  { label: string; pill: string; dot: string; bar: string }
+> = {
+  planejado: {
+    label: "Planejado",
+    pill: "border-hair text-slate",
+    dot: "bg-faint",
+    bar: "border-t-faint",
+  },
+  em_andamento: {
+    label: "Em andamento",
+    pill: "border-gold-lt text-gold",
+    dot: "bg-gold",
+    bar: "border-t-gold",
+  },
+  concluido: {
+    label: "Concluído",
+    pill: "border-acc-lt text-accent",
+    dot: "bg-accent",
+    bar: "border-t-accent",
+  },
+  pausado: {
+    label: "Pausado",
+    pill: "border-dashed border-faint text-slate",
+    dot: "bg-ghost",
+    bar: "border-t-hair",
+  },
+};
 
 export type Project = {
   id: string;
@@ -15,3 +40,7 @@ export type Project = {
   due_date: string | null;
   created_at: string;
 };
+
+export type ProjectInput = Pick<Project, "name" | "description" | "status" | "due_date">;
+
+export type ProjectPatch = Partial<ProjectInput>;
